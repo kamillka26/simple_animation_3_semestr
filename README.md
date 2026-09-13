@@ -16,7 +16,7 @@
 
 ## Структура проекта
 
-animation_project/
+simple_animation_3_semestr/
 ├── .gitignore
 ├── README.md 
 ├── requirements.txt
