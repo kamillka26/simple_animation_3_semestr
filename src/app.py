@@ -29,6 +29,11 @@ class App:
 
         self._running = True
         self._last_time = time.perf_counter()
+        self.canvas.bind("<Button-1>", self._on_click)
+        self.root.bind("<space>", lambda e: self.toggle_pause())
+        self.root.bind("<r>", lambda e: self.reset())
+
+        self._paused = False
 
     def run(self):
         self._last_time = time.perf_counter()
@@ -39,10 +44,19 @@ class App:
         now = time.perf_counter()
         dt = min(now - self._last_time, MAX_DT)
         self._last_time = now
-
-        self.model.update(dt)
-        self.renderer.render(self.model)
+        if not self._paused:
+            self.model.update(dt)
+            self.renderer.render(self.model)
 
         if self._running:
             self.root.after(FRAME_DELAY, self._tick)
-     
+
+    def _on_click(self, event):
+        self.model.add_system(event.x, event.y)
+
+    def toggle_pause(self):
+        self._paused = not self._paused
+
+    def reset(self):
+        self.renderer.clear()
+        self.model.clear()
