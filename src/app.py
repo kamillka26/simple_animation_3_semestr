@@ -1,6 +1,7 @@
 import time
 import tkinter
 
+from .widgets.controls import Controls
 from .models.animation_model import Model
 from .renderers.renderer import Renderer
 
@@ -26,6 +27,7 @@ class App:
         self.canvas.pack(anchor=tkinter.CENTER, expand=1)
         self.model = Model(WIDTH, HEIGHT)
         self.renderer = Renderer(self.canvas, BACKGROUND_RGB)
+        self.controls = Controls(self.root, self.model, self.reset)
 
         self._running = True
         self._last_time = time.perf_counter()

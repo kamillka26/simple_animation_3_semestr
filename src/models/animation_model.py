@@ -42,7 +42,7 @@ class ParticleSystem:
         self.speed_max = 80.0
         self.radius_min = 2.0
         self.radius_max = 5.0
-        self.color = (255, 200, 100)
+        self.color = (255, 105, 180)
         self.max_particles = 400
         self.particles = []
         self._accum = 0.0
