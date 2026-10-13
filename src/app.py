@@ -17,3 +17,6 @@ class App:
         canvas = tkinter.Canvas(bg=BACKGROUND_COLOR, width=WIDTH,
                                 height=HEIGHT)
         canvas.pack(anchor=tkinter.CENTER, expand=1)
+
+    def run(self):
+        self.root.mainloop()
